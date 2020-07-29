@@ -1,12 +1,14 @@
-require 'pry'
+require 'colorize'
+#require 'pry'
 require 'tty-prompt'
+
 class Cli
 
     attr_reader :journal_user
 
     def ascii_welcome
         File.readlines("ascii_welcome.txt") do |line|
-          puts line
+          puts line.colorize(:blue)
         end
     end
 
@@ -14,6 +16,8 @@ class Cli
         puts "Welcome to Emoticreate!" 
         puts "Please tell me your name."
         user = gets.chomp
+
+        ascii_welcome
 
         find_name = User.find{|user| user.user_name.upcase == user.upcase}
         @journal_user = User.find_or_create_by(name: user)
@@ -39,6 +43,6 @@ class Cli
             puts "Breathe out..."
                 sleep(6.seconds)
         end
-binding.pry
+#binding.pry
     end
 end

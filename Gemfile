@@ -7,4 +7,6 @@ gem "pry"
 gem "require_all"
 gem 'activerecord'
 gem 'rake'
+gem 'colorize'
+gem 'tty-prompt'
 
